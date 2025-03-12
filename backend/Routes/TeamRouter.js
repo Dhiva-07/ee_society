@@ -1,7 +1,7 @@
 const ensureAuthenticated = require('../Middlewares/ViewValidation.js');
-const { getEvents } = require("../Controllers/EventController.js");
+const { getTeam } = require("../Controllers/TeamController.js");
 const router = require('express').Router();
 
-router.get('/', ensureAuthenticated , getEvents)
+router.get('/', ensureAuthenticated , getTeam)
 
 module.exports = router;

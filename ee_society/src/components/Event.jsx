@@ -57,7 +57,7 @@ function Event() {
         <div key={event._id}>
           <h3>{event.title}</h3>
           <p>{event.desc}</p>
-          <img src={event.img} alt={event.title} width="200" />
+          <img src={event.img} width="200" />
           <p>
             Starts in:{" "}
             {Math.floor(
