@@ -31,27 +31,27 @@ const login = async (req, res) => {
     const errmsg = "Auth failed , User email or password is wrong";
     if (!user) {
       return res
-        .status(403)
-        .json({
-          message: errmsg ,
-          success: false,
-        });
+      .status(403)
+      .json({
+        message: errmsg ,
+        success: false,
+      });
     }
     const ispassEqual = await bcrypt.compare(password , user.password);
     if(!ispassEqual){
-        return res
-        .status(403)
-        .json({
+      return res
+      .status(403)
+      .json({
           message: errmsg ,
           success: false,
         });
-    }
-    const jwtToken = jwt.sign(
-        {email : user.email , _id : user._id},
+      }
+      const jwtToken = jwt.sign(
+        {email : user.email , _id : user._id , isAdmin : user.isAdmin},
         process.env.JWT_SECRET,
         {expiresIn : '24h'},
-    )
-
+      )
+      
     res.status(200).json(
         { 
             message: "Login successful",
@@ -59,6 +59,7 @@ const login = async (req, res) => {
             jwtToken,
             email,
             name : user.name,
+            isAdmin : user.isAdmin,
         }
     );
   } catch (err) {

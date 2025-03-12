@@ -13,6 +13,7 @@ function Home() {
   const handleLogout = (e) => {
     localStorage.removeItem('token');
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('isAdmin');
     handleSuccess('User Logged Out');
     setTimeout(() => {
       navigate('/login');

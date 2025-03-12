@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { handleError } from "../utils";
 function Event() {
-  const [products, setProducts] = useState("");
-  const fetchProducts = async () => {
+  const [events, setEvents] = useState([]);
+  const fetchEvents = async () => {
     try {
-      const url = "http://localhost:8080/products";
+      const url = "http://localhost:8080/events";
       const headers = {
         headers: {
           Authorization: localStorage.getItem("token"),
@@ -12,23 +12,24 @@ function Event() {
       };
       const response = await fetch(url, headers);
       const result = await response.json();
-      console.log(result);
-      setProducts(result);
+      // console.log(result);
+      setEvents(result.events);
     } catch (err) {
       handleError(err);
     }
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchEvents();
   }, []);
   return (
     <div>
-      {products &&
-        products.map((item, index) => (
+      {events &&
+        events.map((item, index) => (
           <ul key={index}>
+            <img src = {item.img} />
             <span>
-              {item.name} : {item.price}
+              {item.title} : {item.desc}
             </span>
           </ul>
         ))}
