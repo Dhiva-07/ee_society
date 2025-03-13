@@ -50,7 +50,7 @@ function Signup() {
   };
 
   return (
-    <div className="container">
+    <div className="Scontainer">
       <h1>SignUp</h1>
       <form onSubmit={handleSignup}>
         <div>

@@ -1,28 +1,23 @@
 import { useEffect } from "react";
-import { replace, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function RefreshHandler({setIsAuthenticated}) {
+function RefreshHandler({ setIsAuthenticated }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsAuthenticated(true);
-      if (
-        location.pathname === "/" ||
-        location.pathname === "/login" ||
-        location.pathname === "/signup" 
-      ) {
-        navigate('/home' , {replace : false});
+    if (token) {
+      setIsAuthenticated((prev) => {
+        if (!prev) return true;
+        return prev;
+      });
+
+      if (["/", "/login", "/signup"].includes(location.pathname)) {
+        navigate("/home", { replace: true });
       }
-    }else{
-        if(
-            location.pathname === '/events'
-        ){
-            navigate('/login' , {replace : false});
-        }
     }
-  }, [location , navigate , setIsAuthenticated]);
+  }, [token, location.pathname, navigate]);
 
   return null;
 }

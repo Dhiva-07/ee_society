@@ -1,71 +1,88 @@
-*,
-::before,
-::after{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-label{
-    font-size: 20px;
-}
-
-html,
-body{
-    height: 100%;
-    width: 100%;
-}
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container{
-    background-color: #FFF;
-    padding: 32px 48px; 
+.Lcontainer {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    background-color: #fff;
+    padding: 32px 48px;
     border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 8px 8px 24px 0px rgba(66 , 68 , 90 ,1);
+    width: 30%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.container > h1{
+.Lcontainer > h1 {
     margin-bottom: 20px;
+    color: #333;
+    font-size: 26px;
+    font-weight: bold;
 }
 
-.container > form{
+.Lcontainer > form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
-.container div{
+.Lcontainer div {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
-.container input{
+.Lcontainer label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.Lcontainer input {
     width: 100%;
-    font-size: 20px;
-    padding: 10px;
-    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     outline: none;
-    border-bottom: 1px solid black;
+    transition: border 0.3s;
 }
 
-.container input::placeholder{
+.Lcontainer input:focus {
+    border-color: #007bff;
+}
+
+.Lcontainer input::placeholder {
     font-size: 12px;
     font-style: italic;
+    color: #999;
 }
 
-button{
+button {
     background-color: purple;
     border: none;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     border-radius: 5px;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
-    margin: 10px 0;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #6a0dad;
+}
+
+span {
+    font-size: 14px;
+    color: #333;
+}
+
+span a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+span a:hover {
+    text-decoration: underline;
 }

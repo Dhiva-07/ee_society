@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { handleError } from "../utils";
+import Navbar from "./Navbar";
+import "./event.css";
+
 function Event() {
   const [events, setEvents] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [past, setPast] = useState([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const fetchEvents = async () => {
     try {
       const url = "http://localhost:8080/events";
@@ -14,7 +19,6 @@ function Event() {
       };
       const response = await fetch(url, headers);
       const result = await response.json();
-      // console.log(result);
       setEvents(result.events);
     } catch (err) {
       handleError(err);
@@ -22,27 +26,22 @@ function Event() {
   };
 
   useEffect(() => {
-    if (events.length > 0) {
+    const interval = setInterval(() => {
       categorizeEvents(events);
-    }
+    }, 1); 
+  
+    return () => clearInterval(interval); 
   }, [events]);
+
 
   const categorizeEvents = (events) => {
     const currentTime = new Date();
-    console.log("Current Time:", currentTime);
-    events.forEach((event) => {
-      console.log("Event Date (Raw):", event.date);
-      console.log("Event Date (Parsed):", new Date(event.date));
-    });
     const upcomingEvents = events.filter(
       (event) => new Date(event.date) > currentTime
     );
     const pastEvents = events.filter(
       (event) => new Date(event.date) <= currentTime
-    );
-    console.log(upcomingEvents);
-    console.log(pastEvents);
-    console.log(events);
+    ).reverse();
     setUpcoming(upcomingEvents);
     setPast(pastEvents);
   };
@@ -50,34 +49,53 @@ function Event() {
   useEffect(() => {
     fetchEvents();
   }, []);
-  return (
-    <div>
-      <h2>Upcoming Events</h2>
-      {upcoming.map((event) => (
-        <div key={event._id}>
-          <h3>{event.title}</h3>
-          <p>{event.desc}</p>
-          <img src={event.img} width="200" />
-          <p>
-            Starts in:{" "}
-            {Math.floor(
-              (new Date(event.date) - new Date()) / (1000 * 60 * 60 * 24)
-            )}{" "}
-            days
-          </p>
-        </div>
-      ))}
 
-      <h2>Past Events</h2>
-      {past.map((event) => (
-        <div key={event._id}>
-          <h3>{event.title}</h3>
-          <p>{event.desc}</p>
-          <img src={event.img} alt={event.title} width="200" />
-          <p>Event Date: {new Date(event.date).toLocaleString()}</p>
+  return (
+    <>
+      <div
+        onClick={() => {
+          if (dropdownOpen) setDropdownOpen(false);
+        }}
+      >
+        <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
+        <div className="event-container">
+          <div className="event-section">
+            <h2 className="event-title">Upcoming Events</h2>
+            <div className="test">
+              {upcoming.map((event) => (
+                <div key={event._id} className="event-card">
+                  <img src={event.img} alt={event.title} />
+                  <div className="event-info">
+                    <h3>{event.title}</h3>
+                    <p>{event.desc}</p>
+                    <p className="event-date">
+                      Event Date: {new Date(event.date).toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="event-section">
+            <h2 className="event-title">Past Events</h2>
+            <div className="test">
+              {past.map((event) => (
+                <div key={event._id} className="event-card">
+                  <img src={event.img} alt={event.title} />
+                  <div className="event-info">
+                    <h3>{event.title}</h3>
+                    <p>{event.desc}</p>
+                    <p className="event-date">
+                      Event Date: {new Date(event.date).toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 }
 

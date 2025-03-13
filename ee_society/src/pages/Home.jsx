@@ -1,35 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { handleSuccess } from '../utils';
-import { ToastContainer } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Navbar from "../components/Navbar";
+import "./home.css";
 
 function Home() {
-  const [loggedInUser , setloggedInUser] = useState('');
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  useEffect(()=>{
-    setloggedInUser(localStorage.getItem('loggedInUser'));
-  },[])
 
-  const handleLogout = (e) => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('isAdmin');
-    handleSuccess('User Logged Out');
-    setTimeout(() => {
-      navigate('/login');
-    }, 1000);
-  }
-
-
+  useEffect(() => {
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {
+      navigate("/login");
+    } else {
+      setLoggedInUser(user);
+    }
+  }, [navigate]);
 
   return (
-    <div>
-      <h1>{loggedInUser}</h1>
-      <button onClick={handleLogout}>Logout</button>
-      
-      <ToastContainer/>
-    </div>
-  )
+    <>
+      <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
+      <div
+        className="home-container"
+        onClick={() => {
+          if (dropdownOpen) setDropdownOpen(false);
+        }}
+      >
+        <div className="content">
+          <h1>Welcome, {loggedInUser}</h1>
+          <p>Explore our community and stay updated with the latest events!</p>
+        </div>
+        <ToastContainer />
+      </div>
+    </>
+  );
 }
 
-export default Home
+export default Home;

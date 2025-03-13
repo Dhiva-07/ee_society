@@ -17,15 +17,17 @@ function App() {
 
   return (
     <div className="App">
-      <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
+      <RefreshHandler
+        setIsAuthenticated={setIsAuthenticated}
+      />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
-        <Route path="/events" element={<Event/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/admin" element={<Admin/>} />
+        <Route path="/events" element={<Event />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );
