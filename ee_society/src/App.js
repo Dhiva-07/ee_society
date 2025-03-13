@@ -3,28 +3,28 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
-import { useState } from "react";
-import RefreshHandler from "./RefreshHandler";
 import Event from "./components/Event";
 import Admin from "./components/Admin";
 import About from "./components/About";
+import { useContext } from "react";
+import AuthContext from "./context/AuthContext";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const PrivateRoute = ({ element }) => {
-    return isAuthenticated ? element : <Navigate to="/login" />;
-  };
-
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
+  if (isLoading) return <div>Loading...</div>;
   return (
     <div className="App">
-      <RefreshHandler
-        setIsAuthenticated={setIsAuthenticated}
-      />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route
+          path="/"
+          element={<Navigate to={isAuthenticated ? "/home" : "/login"} />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<PrivateRoute element={<Home />} />} />
+        <Route
+          path="/home"
+          element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+        />
         <Route path="/events" element={<Event />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Admin />} />
