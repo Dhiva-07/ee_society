@@ -52,8 +52,8 @@
 }
 
 .event-card img {
-  width: 80%;
-  height: 60%;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -62,11 +62,11 @@
 
 .event-info h3 {
     font-size: 22px;
-    font-weight: 800; /* Increased boldness for impact */
+    font-weight: 800; 
     margin-bottom: 8px;
-    color: #f1c40f; /* Bright gold color for attraction */
+    color: #f1c40f; 
     text-align: center;
-    text-shadow: 1px 1px 5px rgba(241, 196, 15, 0.7); /* Soft glow effect */
+    text-shadow: 1px 1px 5px rgba(241, 196, 15, 0.7); 
   }
 
 .event-info p {

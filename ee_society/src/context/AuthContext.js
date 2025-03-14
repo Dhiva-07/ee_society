@@ -5,8 +5,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [loggedInUser, setLoggedInUser] = useState(localStorage.getItem("loggedInUser") || null);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,18 +15,38 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(false);
   }, []);
 
-  const login = (token) => {
+  const login = (token, name, isAdmin) => {
     localStorage.setItem("token", token);
+    localStorage.setItem("loggedInUser", name);
+    localStorage.setItem("isAdmin", isAdmin);
+    
     setIsAuthenticated(true);
+    setUser({ name, isAdmin });
   };
+
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("isAdmin");
+    
     setIsAuthenticated(false);
+    setUser(null);
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      setUser({
+        name: localStorage.getItem("loggedInUser"),
+        isAdmin: localStorage.getItem("isAdmin") === "true",
+      });
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, isLoading , login , logout , loggedInUser, setLoggedInUser, dropdownOpen, setDropdownOpen }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user , isLoading , login , logout }}>
       {children}
     </AuthContext.Provider>
   );

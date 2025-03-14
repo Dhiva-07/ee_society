@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
+import AuthContext from "../context/AuthContext";
 import "./login.css";
 function Login() {
+  const { login } = useContext(AuthContext);
   const [loginInfo, setloginInfo] = useState({
     email: "",
     password: "",
@@ -25,9 +27,8 @@ function Login() {
       const { success, message, jwtToken, name, error, isAdmin } = result;
       if (success) {
         handleSuccess(message);
-        localStorage.setItem("token", jwtToken);
-        localStorage.setItem("loggedInUser", name);
-        localStorage.setItem("isAdmin", isAdmin);
+        login(jwtToken, name, isAdmin);
+
         setTimeout(() => {
           navigate("/home");
         }, 1000);
