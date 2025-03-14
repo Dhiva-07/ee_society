@@ -19,21 +19,20 @@ function Home() {
   }, [navigate]);
 
   return (
-    <>
+    <div
+      onClick={() => {
+        if (dropdownOpen) setDropdownOpen(false);
+      }}
+    >
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
-      <div
-        className="home-container"
-        onClick={() => {
-          if (dropdownOpen) setDropdownOpen(false);
-        }}
-      >
+      <div div className="home-container">
         <div className="content">
           <h1>Welcome, {loggedInUser}</h1>
           <p>Explore our community and stay updated with the latest events!</p>
         </div>
         <ToastContainer />
       </div>
-    </>
+    </div>
   );
 }
 

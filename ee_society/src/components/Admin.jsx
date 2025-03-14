@@ -1,11 +1,19 @@
-import React from 'react'
-
+import React, { useState } from "react";
+import Navbar from "./Navbar";
+import "./admin.css";
 function Admin() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   return (
-    <div>
-      Admin
+    <div
+      onClick={() => {
+        if (dropdownOpen) setDropdownOpen(false);
+      }}
+      className="wrapper"
+    >
+      <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
+      
     </div>
-  )
+  );
 }
 
-export default Admin
+export default Admin;

@@ -40,15 +40,14 @@ function Community() {
   };
 
   return (
-    <>
+    <div
+      onClick={() => {
+        if (dropdownOpen) setDropdownOpen(false);
+      }}
+    >
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
       <h1 className="Ctitle">Community</h1>
-      <div
-        onClick={() => {
-          if (dropdownOpen) setDropdownOpen(false);
-        }}
-        className="container"
-      >
+      <div className="container">
         <div className="intro">
           <p className="intro-text">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
@@ -97,7 +96,8 @@ function Community() {
             consequuntur corrupti suscipit! Delectus nesciunt possimus aut
             mollitia obcaecati. Ut temporibus est consequatur. Adipisci hic
             nobis ut possimus molestias id soluta optio nulla deleniti fuga,
-            unde laudantium culpa esse commodi perspiciatitimus qmet ducimus animi!
+            unde laudantium culpa esse commodi perspiciatitimus qmet ducimus
+            animi!
           </p>
         </div>
         <div className="community-container">
@@ -115,7 +115,7 @@ function Community() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

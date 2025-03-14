@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const ensureAuthenticated = (req, res, next) => {
+const ensureValid = (req, res, next) => {
   const auth = req.headers["authorization"];
   if (!auth) {
     return res
@@ -9,6 +9,9 @@ const ensureAuthenticated = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(auth, process.env.JWT_SECRET);
+    if (!decoded.isAdmin) {
+      return res.status(403).json({ message: "Access denied. Admins only." });
+    }
     req.user = decoded;
     next();
   } catch (err) {
@@ -18,4 +21,4 @@ const ensureAuthenticated = (req, res, next) => {
   }
 };
 
-module.exports = ensureAuthenticated;
+module.exports = ensureValid;
