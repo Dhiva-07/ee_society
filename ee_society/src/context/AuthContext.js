@@ -15,10 +15,11 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(false);
   }, []);
 
-  const login = (token, name, isAdmin) => {
+  const login = (token, name, isAdmin , email) => {
     localStorage.setItem("token", token);
     localStorage.setItem("loggedInUser", name);
     localStorage.setItem("isAdmin", isAdmin);
+    localStorage.setItem("email", email);
     
     setIsAuthenticated(true);
     setUser({ name, isAdmin });
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem("isAdmin");
+    localStorage.removeItem("email");
     
     setIsAuthenticated(false);
     setUser(null);

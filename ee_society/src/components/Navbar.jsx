@@ -17,6 +17,7 @@ function Navbar({ dropdownOpen, setDropdownOpen }) {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem("isAdmin");
+    localStorage.removeItem("email");
     handleSuccess("User Logged Out");
     setTimeout(() => {
       navigate("/login");

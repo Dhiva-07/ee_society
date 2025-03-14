@@ -8,6 +8,7 @@ import Admin from "./components/Admin";
 import About from "./components/About";
 import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
+import Community from "./components/Community";
 
 function App() {
   const { isAuthenticated, isLoading } = useContext(AuthContext);
@@ -27,6 +28,7 @@ function App() {
         />
         <Route path="/events" element={<Event />} />
         <Route path="/about" element={<About />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>

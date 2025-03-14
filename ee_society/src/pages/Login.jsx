@@ -27,7 +27,7 @@ function Login() {
       const { success, message, jwtToken, name, error, isAdmin } = result;
       if (success) {
         handleSuccess(message);
-        login(jwtToken, name, isAdmin);
+        login(jwtToken, name, isAdmin, loginInfo.email);
 
         setTimeout(() => {
           navigate("/home");
