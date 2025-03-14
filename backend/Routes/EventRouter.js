@@ -9,9 +9,7 @@ const storage = multer.diskStorage({
     callback(null, __dirname + "/../files");
   },
   filename: function (req, file, callback) {
-    // You can write your own logic to define the filename here (before passing it into the callback), e.g:
-    // console.log(file.originalname); // User-defined filename is available
-    const filename = `event_${file.originalname}`; // Create custom filename (crypto.randomUUID available in Node 19.0.0+ only)
+    const filename = `/event_${file.originalname}`; 
     callback(null, filename);
   },
 });
@@ -24,11 +22,11 @@ const upload = multer({
 router.get("/", ensureAuthenticated, getEvents);
 router.post("/add", ensureValid, upload.any(), async function (req, res) {
   try {
-    console.log("Received body:", req.body); // Log request body
-    console.log("Received file:", req.files); // Log uploaded file info
+    // console.log("Received body:", req.body); 
+    // console.log("Received file:", req.files); 
 
     const { title, desc, date } = req.body;
-    const img = req.files[0] ? req.files[0].filename : null; // Get image path
+    const img = req.files[0] ? req.files[0].filename : null; 
     console.log(img);
     if (!title || !desc || !date) {
       return res.status(400).json({
@@ -46,7 +44,7 @@ router.post("/add", ensureValid, upload.any(), async function (req, res) {
       event: newEvent,
     });
   } catch (error) {
-    console.error("Error adding event:", error); // Log error
+    console.error("Error adding event:", error); 
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });

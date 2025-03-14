@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import "./event.css";
 
 function Event() {
+  const PF = process.env.REACT_APP_PUBLIC_URL;
   const [events, setEvents] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [past, setPast] = useState([]);
@@ -28,7 +29,7 @@ function Event() {
   useEffect(() => {
     const interval = setInterval(() => {
       categorizeEvents(events);
-    }, 1); 
+    }, 100); 
   
     return () => clearInterval(interval); 
   }, [events]);
@@ -38,10 +39,11 @@ function Event() {
     const currentTime = new Date();
     const upcomingEvents = events.filter(
       (event) => new Date(event.date) > currentTime
-    );
+    ).sort((a, b) => new Date(a.date) - new Date(b.date));
     const pastEvents = events.filter(
       (event) => new Date(event.date) <= currentTime
-    ).reverse();
+    ).sort((a, b) => new Date(a.date) - new Date(b.date))
+    .reverse();
     setUpcoming(upcomingEvents);
     setPast(pastEvents);
   };
@@ -64,7 +66,7 @@ function Event() {
             <div className="test">
               {upcoming.map((event) => (
                 <div key={event._id} className="event-card">
-                  <img src={event.img} alt={event.title} />
+                  <img src= {PF + event.img} alt={event.title} />
                   <div className="event-info">
                     <h3>{event.title}</h3>
                     <p>{event.desc}</p>
@@ -81,7 +83,7 @@ function Event() {
             <div className="test">
               {past.map((event) => (
                 <div key={event._id} className="event-card">
-                  <img src={event.img} alt={event.title} />
+                  <img src= {PF + event.img} alt={event.title} />
                   <div className="event-info">
                     <h3>{event.title}</h3>
                     <p>{event.desc}</p>
