@@ -11,10 +11,12 @@
     color: rgb(218, 212, 212);
 }
 .Ctitle{
-    position: relative;
-    left: 40%;
+    font-size: 38px;
     font-weight: bold;
-    font-size: 50px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px rgba(222, 137, 51, 0.6);
 }
 .community-container {
     position: sticky;

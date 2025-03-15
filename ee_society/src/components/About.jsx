@@ -8,6 +8,7 @@ function About() {
   const topLevel = team.filter((mem) => mem.level >= 1 && mem.level <= 3);
   const midLevel = team.filter((mem) => mem.level >= 4 && mem.level <= 9);
   const bottomLevel = team.filter((mem) => mem.level >= 10);
+  const PF = process.env.REACT_APP_PUBLIC_URL2;
 
   const fetchTeam = async () => {
     try {
@@ -30,7 +31,7 @@ function About() {
 
   const MemberCard = ({ member }) => (
     <div className="member-card">
-      <img src={member.img} alt={member.name} className="member-img" />
+      <img src={PF + member.img} alt={member.name} className="member-img" />
       <h3 className="member-name">{member.name}</h3>
       <p className="member-role">{member.role}</p>
     </div>

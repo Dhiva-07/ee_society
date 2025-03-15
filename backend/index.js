@@ -18,6 +18,7 @@ app.use('/events' , EventRouter);
 app.use('/team' , TeamRouter);
 app.use('/community' , CommunityRouter);
 app.use("/uploads", express.static(path.join(__dirname, "/files")));
+app.use("/users", express.static(path.join(__dirname, "/users")));
 app.listen(PORT , ()=>{
     console.log(`server is running on ${PORT}`)
 })

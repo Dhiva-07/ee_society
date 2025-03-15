@@ -66,7 +66,7 @@ function Event() {
             <div className="test">
               {upcoming.map((event) => (
                 <div key={event._id} className="event-card">
-                  <img src= {PF + event.img} alt={event.title} />
+                  <img className="event_sec_img" src= {PF + event.img} alt={event.title} />
                   <div className="event-info">
                     <h3>{event.title}</h3>
                     <p>{event.desc}</p>
@@ -83,7 +83,7 @@ function Event() {
             <div className="test">
               {past.map((event) => (
                 <div key={event._id} className="event-card">
-                  <img src= {PF + event.img} alt={event.title} />
+                  <img className="event_sec_img" src= {PF + event.img} alt={event.title} />
                   <div className="event-info">
                     <h3>{event.title}</h3>
                     <p>{event.desc}</p>
