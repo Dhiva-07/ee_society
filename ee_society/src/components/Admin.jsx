@@ -163,7 +163,7 @@ function Admin() {
           onChange={handleFileChange}
           required
         />
-        <button type="submit">Add Event</button>
+        <button className="addbtn" type="submit">Add Event</button>
       </form>
         <div className="event-section">
           <h2 className="event-title">Upcoming Events</h2>
@@ -178,7 +178,7 @@ function Admin() {
                     Event Date: {new Date(event.date).toLocaleString()}
                   </p>
                 </div>
-                <button
+                <button 
                   onClick={() => handleDelete(event._id)}
                   className="delete-btn"
                 >
@@ -211,7 +211,7 @@ function Admin() {
             ))}
           </div>
         </div>
-        <button
+        <button 
           onClick={() => {
             setShowPast(!showPast);
           }}

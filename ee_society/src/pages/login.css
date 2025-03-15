@@ -56,7 +56,7 @@
     color: #999;
 }
 
-button {
+.loginbtn {
     background-color: purple;
     border: none;
     font-size: 18px;

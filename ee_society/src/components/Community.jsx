@@ -40,7 +40,8 @@ function Community() {
   };
 
   return (
-    <div
+    <div 
+      className="communitywrap"
       onClick={() => {
         if (dropdownOpen) setDropdownOpen(false);
       }}

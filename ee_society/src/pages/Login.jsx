@@ -74,7 +74,7 @@ function Login() {
             value={loginInfo.password}
           />
         </div>
-        <button>Login</button>
+        <button className="loginbtn">Login</button>
         <span>
           Don't have an account ?<Link to="/signup">SignUp</Link>
         </span>
