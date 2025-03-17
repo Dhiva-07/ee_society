@@ -1,6 +1,4 @@
 .home-container {
-  width: 100vw;
-  height: 100vh;
   background: linear-gradient(to right, #141e30, #243b55);
   display: flex;
   flex-direction: column;
@@ -9,26 +7,75 @@
   color: white;
 }
 
+.homeheading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.homeheadingimg {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
 .content {
   width: 100%;
-  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
-.content h1 {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #aaf4eb;
+  line-height: 1.6;
+  text-align: justify;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
-.content p {
-  font-size: 22px;
-  opacity: 0.8;
+.content li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  line-height: 1.6;
+  text-align: justify;
   max-width: 80%;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: greenyellow;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #9cf709;
+  display: inline-block;
+}
+
+.hometitle {
+  font-size: 40px;
+  font-weight: 700;
+  color: whitesmoke;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.offerlistheading{
+  margin-right: auto;
+  margin-left: 10%;
+  font-size: 25px;
+  color: yellow;
 }

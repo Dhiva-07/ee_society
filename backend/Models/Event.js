@@ -18,6 +18,10 @@ const EventSchema = new Schema({
     type: Date,
     required: true,
   },
+  location : {
+    type : String,
+    required : true,
+  },
 });
 
 const EventModel = mongoose.model("events", EventSchema);

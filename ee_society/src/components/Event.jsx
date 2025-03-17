@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { handleError } from "../utils";
 import Navbar from "./Navbar";
+import EventCard from "./EventCard";
 import "./event.css";
 
 function Event() {
@@ -29,21 +30,20 @@ function Event() {
   useEffect(() => {
     const interval = setInterval(() => {
       categorizeEvents(events);
-    }, 100); 
-  
-    return () => clearInterval(interval); 
-  }, [events]);
+    }, 100);
 
+    return () => clearInterval(interval);
+  }, [events]);
 
   const categorizeEvents = (events) => {
     const currentTime = new Date();
-    const upcomingEvents = events.filter(
-      (event) => new Date(event.date) > currentTime
-    ).sort((a, b) => new Date(a.date) - new Date(b.date));
-    const pastEvents = events.filter(
-      (event) => new Date(event.date) <= currentTime
-    ).sort((a, b) => new Date(a.date) - new Date(b.date))
-    .reverse();
+    const upcomingEvents = events
+      .filter((event) => new Date(event.date) > currentTime)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+    const pastEvents = events
+      .filter((event) => new Date(event.date) <= currentTime)
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+      .reverse();
     setUpcoming(upcomingEvents);
     setPast(pastEvents);
   };
@@ -65,16 +65,7 @@ function Event() {
             <h2 className="event-title">Upcoming Events</h2>
             <div className="test">
               {upcoming.map((event) => (
-                <div key={event._id} className="event-card">
-                  <img className="event_sec_img" src= {PF + event.img} alt={event.title} />
-                  <div className="event-info">
-                    <h3>{event.title}</h3>
-                    <p>{event.desc}</p>
-                    <p className="event-date">
-                      Event Date: {new Date(event.date).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
+                <EventCard key={event._id} event={event} PF={PF} />
               ))}
             </div>
           </div>
@@ -82,16 +73,7 @@ function Event() {
             <h2 className="event-title">Past Events</h2>
             <div className="test">
               {past.map((event) => (
-                <div key={event._id} className="event-card">
-                  <img className="event_sec_img" src= {PF + event.img} alt={event.title} />
-                  <div className="event-info">
-                    <h3>{event.title}</h3>
-                    <p>{event.desc}</p>
-                    <p className="event-date">
-                      Event Date: {new Date(event.date).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
+                <EventCard key={event._id} event={event} PF={PF} />
               ))}
             </div>
           </div>

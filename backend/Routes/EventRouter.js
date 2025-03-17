@@ -25,7 +25,7 @@ router.post("/add", ensureValid, upload.any(), async function (req, res) {
     // console.log("Received body:", req.body); 
     // console.log("Received file:", req.files); 
 
-    const { title, desc, date } = req.body;
+    const { title, desc, date , location } = req.body;
     const img = req.files[0] ? req.files[0].filename : null; 
     console.log(img);
     if (!title || !desc || !date) {
@@ -35,7 +35,7 @@ router.post("/add", ensureValid, upload.any(), async function (req, res) {
       });
     }
 
-    const newEvent = new EventModel({ title, desc, img, date });
+    const newEvent = new EventModel({ title, desc, img, date , location});
     await newEvent.save();
 
     res.status(201).json({
