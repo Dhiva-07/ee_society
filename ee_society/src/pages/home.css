@@ -1,9 +1,9 @@
 .home-container {
-  background: linear-gradient(to right, #141e30, #243b55);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-style: italic;
   color: white;
 }
 
@@ -33,7 +33,7 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
   font-weight: 400;
-  color: #aaf4eb;
+  color: #f9f9f9;
   line-height: 1.6;
   text-align: justify;
   max-width: 80%;
@@ -53,13 +53,12 @@
 
 .content h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 28px;
+  font-size: 38px;
   font-weight: 700;
   color: greenyellow;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin-bottom: 10px;
-  border-bottom: 3px solid #9cf709;
   display: inline-block;
 }
 

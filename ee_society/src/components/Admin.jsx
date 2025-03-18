@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { handleError } from "../utils";
 import Navbar from "./Navbar";
 import "./admin.css";
+import EventCard from "./EventCard";
 function Admin() {
   const [eventData, setEventData] = useState({
     title: "",
     desc: "",
     date: "",
+    location: "",
     img: null,
   });
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -69,6 +71,7 @@ function Admin() {
     formData.append("desc", eventData.desc);
     formData.append("date", eventData.date);
     formData.append("img", eventData.img);
+    formData.append("location", eventData.location);
 
     try {
       const response = await fetch("http://localhost:8080/events/add", {
@@ -83,30 +86,10 @@ function Admin() {
         throw new Error("Failed to add event");
       }
       fetchEvents();
-      setEventData({ title: "", desc: "", date: "", img: null });
+      setEventData({ title: "", desc: "", date: "", img: null, location: "" });
+      window.location.reload();
     } catch (error) {
       console.error("Error adding event:", error);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this event?")) {
-      try {
-        const url = `http://localhost:8080/events/delete/${id}`;
-        const response = await fetch(url, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
-          },
-        });
-        window.location.reload();
-        if (!response.ok) {
-          throw new Error("Failed to delete event");
-        }
-      } catch (err) {
-        console.error("Error deleting event:", err);
-      }
     }
   };
 
@@ -151,6 +134,13 @@ function Admin() {
           required
         />
         <input
+          name="location"
+          placeholder="Venue"
+          value={eventData.location}
+          onChange={handleChange}
+          required
+        />
+        <input
           type="date"
           name="date"
           value={eventData.date}
@@ -163,31 +153,18 @@ function Admin() {
           onChange={handleFileChange}
           required
         />
-        <button className="addbtn" type="submit">Add Event</button>
+        <button className="addbtn" type="submit">
+          Add Event
+        </button>
       </form>
-        <div className="event-section">
-          <h2 className="event-title">Upcoming Events</h2>
-          <div className="test">
-            {upcoming.map((event) => (
-              <div key={event._id} className="event-card">
-                <img className="admin_sec_img" src={PF + event.img} alt={event.title} />
-                <div className="event-info">
-                  <h3>{event.title}</h3>
-                  <p>{event.desc}</p>
-                  <p className="event-date">
-                    Event Date: {new Date(event.date).toLocaleString()}
-                  </p>
-                </div>
-                <button 
-                  onClick={() => handleDelete(event._id)}
-                  className="delete-btn"
-                >
-                  Delete Event
-                </button>
-              </div>
-            ))}
-          </div>
+      <div className="event-section">
+        <h2 className="event-title">Upcoming Events</h2>
+        <div className="test">
+          {upcoming.map((event) => (
+            <EventCard key={event._id} event={event} PF={PF} onAdmin={1} />
+          ))}
         </div>
+      </div>
       <div className="suggestioncontainer">
         <h2 className="addevent">Suggestions </h2>
         <div className="resug">
@@ -211,12 +188,14 @@ function Admin() {
             ))}
           </div>
         </div>
-        <button 
+        <button
           onClick={() => {
             setShowPast(!showPast);
           }}
           className="showpast"
-        >{showPast ? "Hide Past Suggestions" : "Show Past Suggestions"}</button>
+        >
+          {showPast ? "Hide Past Suggestions" : "Show Past Suggestions"}
+        </button>
         {showPast && (
           <div className="resug">
             <h2>Past Suggestions : </h2>

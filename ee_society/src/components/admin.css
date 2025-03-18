@@ -16,9 +16,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 600px;
-  height: 420px;
   background-color: rgb(194, 170, 170);
   gap: 15px;
   margin-bottom: 20px;
@@ -45,18 +45,11 @@ input[type="file"] {
   padding: 5px;
 }
 
-.delete-btn , .addbtn{
-  background: red;
-  color: white;
-  font-size: 20px;
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.addbtn{
+  margin-bottom: 15px;
 }
 
-button:hover {
+.addbtn:hover {
   background: #0056b3;
 }
 
