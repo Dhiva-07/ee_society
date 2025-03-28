@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <div
-      className="main-container"
+      className="home-main-container"
       onClick={() => {
         if (dropdownOpen) setDropdownOpen(false);
       }}

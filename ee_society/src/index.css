@@ -1,5 +1,7 @@
 html,
-body , #root, .App {
+body,
+#root,
+.App {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -8,4 +10,36 @@ body , #root, .App {
   background: linear-gradient(135deg, #050d11, #0b191d, #030e13);
   color: white;
   overflow-x: hidden;
+}
+:root {
+  --primary-color: #2a2a72;
+  --accent-color: #00d4ff;
+  --dark-bg: #0a0a2e;
+  --light-text: #f5f9fc;
+  --gradient-1: linear-gradient(135deg, #2a2a72 0%, #009ffd 100%);
+  --gradient-2: linear-gradient(45deg, #00d4ff 0%, #2a2a72 100%);
+  --gradient-3: linear-gradient(to right, #2a2a72, #7b2cbf, #00d4ff);
+  --gradient-4: radial-gradient(circle at top right, #2a2a72, transparent),
+    radial-gradient(circle at bottom left, #00d4ff, transparent);
+  --gradient-5: conic-gradient(from 90deg, #2a2a72, #7b2cbf, #00d4ff, #2a2a72);
+  --gradient-6: linear-gradient(
+    135deg,
+    rgba(42, 42, 114, 0.9) 0%,
+    rgba(123, 44, 191, 0.7) 50%,
+    rgba(0, 212, 255, 0.9) 100%
+  );
+  --gradient-7: linear-gradient(
+    to bottom,
+    var(--dark-bg) 0%,
+    var(--primary-color) 50%,
+    var(--accent-color) 100%
+  );
+  --gradient-8: repeating-linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--primary-color) 10px,
+    var(--accent-color) 10px,
+    var(--accent-color) 20px
+  );
+
 }
