@@ -7,6 +7,7 @@ import "./navbar.css";
 
 function Navbar({ dropdownOpen, setDropdownOpen }) {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const PF = process.env.REACT_APP_PUBLIC_URL2;
   const navigate = useNavigate();
 
@@ -29,9 +30,26 @@ function Navbar({ dropdownOpen, setDropdownOpen }) {
     <>
       <nav className="navbar">
         <div className="logo">
-          <img src={PF + '/logo2.png'} alt="Logo" />
+          <a
+            href="https://www.iitism.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={PF + "/logo2.png"} alt="Logo" />
+          </a>
         </div>
-        <ul className="nav-links">
+
+        {/* Hamburger Menu Icon for Mobile */}
+        <div
+          className="menu-icon"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        <ul className={`nav-links ${mobileMenuOpen ? "active" : ""}`}>
           <li>
             <Link to="/">Home</Link>
           </li>
