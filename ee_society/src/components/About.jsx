@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { handleError } from "../utils";
 import Navbar from "./Navbar";
 import "./about.css";
+
 function About() {
   const [team, setTeam] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,6 +26,7 @@ function About() {
       handleError(err);
     }
   };
+
   useEffect(() => {
     fetchTeam();
   }, []);
