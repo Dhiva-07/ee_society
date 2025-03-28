@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -6,49 +7,50 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+  // Fetch user details from API
+  const fetchUser = async (token) => {
+    try {
+      const res = await axios.get("http://localhost:8080/auth/user", {
+        headers: { Authorization: token },
+      });
       setIsAuthenticated(true);
+      setUser(res.data.user);
+    } catch (err) {
+      console.error("Error fetching user:", err);
+      setIsAuthenticated(false);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
-  }, []);
-
-  const login = (token, name, isAdmin , email) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("loggedInUser", name);
-    localStorage.setItem("isAdmin", isAdmin);
-    localStorage.setItem("email", email);
-    
-    setIsAuthenticated(true);
-    setUser({ name, isAdmin });
   };
 
+  // Handle login
+  const login = async (token) => {
+    localStorage.setItem("token", token);
+    await fetchUser(token); // Fetch user details
+  };
 
+  // Handle logout
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("email");
-    
     setIsAuthenticated(false);
     setUser(null);
   };
 
+  // Check authentication on page load
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsAuthenticated(true);
-      setUser({
-        name: localStorage.getItem("loggedInUser"),
-        isAdmin: localStorage.getItem("isAdmin") === "true",
-      });
+      fetchUser(token);
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, user , isLoading , login , logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, user, isLoading, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

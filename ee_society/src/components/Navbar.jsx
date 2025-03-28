@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { handleSuccess } from "../utils";
 import { ToastContainer } from "react-toastify";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 
 function Navbar({ dropdownOpen, setDropdownOpen }) {
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_URL2;
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setIsAdmin(localStorage.getItem("isAdmin") === "true");
-  }, []);
-
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("email");
     handleSuccess("User Logged Out");
     setTimeout(() => {
       navigate("/login");
@@ -29,7 +24,7 @@ function Navbar({ dropdownOpen, setDropdownOpen }) {
     <>
       <nav className="navbar">
         <div className="logo">
-          <img src={PF + '/logo2.png'} alt="Logo" />
+          <img src={PF + user.img} alt="Logo" />
         </div>
         <ul className="nav-links">
           <li>
@@ -44,7 +39,7 @@ function Navbar({ dropdownOpen, setDropdownOpen }) {
           <li>
             <Link to="/community">Community</Link>
           </li>
-          {isAdmin && (
+          {user.isAdmin && (
             <li>
               <Link to="/admin">Admin</Link>
             </li>

@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem("loggedInUser");
+    const user = localStorage.getItem("token");
     if (!user) {
       navigate("/login");
     }

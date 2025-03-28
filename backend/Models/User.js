@@ -19,6 +19,12 @@ const UserSchema = new Schema({
     isAdmin : {
         type : Boolean,
         default : false,
+    },
+    img : {
+        type : String,
+    },
+    bio : {
+        type : String,
     }
 })
 

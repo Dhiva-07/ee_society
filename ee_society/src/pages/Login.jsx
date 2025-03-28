@@ -24,10 +24,10 @@ function Login() {
         body: JSON.stringify(loginInfo),
       });
       const result = await response.json();
-      const { success, message, jwtToken, name, error, isAdmin } = result;
+      const { success, message, jwtToken, error} = result;
       if (success) {
         handleSuccess(message);
-        login(jwtToken, name, isAdmin, loginInfo.email);
+        login(jwtToken);
 
         setTimeout(() => {
           navigate("/home");

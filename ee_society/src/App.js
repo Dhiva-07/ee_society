@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Event from "./components/Event";
 import Admin from "./components/Admin";
 import About from "./components/About";
+import Profile from "./pages/Profile";
 import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
 import Community from "./components/Community";
@@ -27,6 +28,7 @@ function App() {
           element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
         />
         <Route path="/events" element={<Event />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
         <Route path="/community" element={<Community />} />
         <Route path="/admin" element={<Admin />} />
