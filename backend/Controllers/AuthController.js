@@ -43,7 +43,7 @@ const login = async (req, res) => {
     );
 
     res.status(200).json({
-      message: "Login successful",
+      message: "Login Successful",
       success: true,
       jwtToken,
     });
