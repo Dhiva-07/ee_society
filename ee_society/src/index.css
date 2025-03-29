@@ -7,7 +7,7 @@ body,
   margin: 0;
   padding: 0;
   font-family: "Arial", sans-serif;
-  background: linear-gradient(135deg, #050d11, #0b191d, #030e13);
+  background-color: var(--dark-bg);
   color: white;
   overflow-x: hidden;
 }

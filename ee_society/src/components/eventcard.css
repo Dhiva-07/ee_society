@@ -1,80 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+  --primary-color: #2A2A72;
+  --accent-color: #00D4FF;
+  --dark-bg: #0A0A2E;
+  --light-text: #F5F9FC;
+  --gradient-1: linear-gradient(135deg, #2A2A72 0%, #009FFD 100%);
+  --gradient-2: linear-gradient(45deg, #00D4FF 0%, #2A2A72 100%);
+}
+
+/* Main Card Container */
 .event-card {
-  background: linear-gradient(145deg, #1e293b, #334155);
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  width: 300px;
+  width: 70%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image Container */
+.event-img-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.event-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.event-img-container:hover .event-img {
+  transform: scale(1.05);
+}
+
+/* Hover effect on entire card */
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Event Info Section */
+.event-info {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border: 2px solid rgba(255, 204, 112, 0.4);
-  overflow: hidden;
+  gap: 10px;
 }
 
-.event-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 20px rgba(255, 204, 112, 0.6);
-  border: 2px solid rgba(255, 204, 112, 0.8);
+.event-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #00D4FF;
+  margin-bottom: 5px;
 }
 
-.event_img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(172, 231, 120, 0.3);
+.event-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  color: var(--light-text);
+  line-height: 1.6;
 }
 
-.event-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.event-date,
+.event-venue {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  color: var(--light-text);
 }
 
-.event-info h3 {
-  font-size: 18px;
-  font-weight: 800;
-  color: #f1c40f;
-  text-shadow: 1px 1px 5px rgba(241, 196, 15, 0.7);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 90%;
+.event-date span,
+.event-venue span {
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-right: 5px;
+  font-size: 25px;
 }
 
-.event-section {
-  width: 100%;
-  margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.event-info p {
-  font-weight: bold;
-  color: #a3e635;
-  text-shadow: 1px 1px 3px rgba(163, 230, 53, 0.6);
-  font-size: 16px;
-  margin-bottom: 10px;
-  max-height: 45px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.delete-btn , .addbtn{
-  background: red;
-  color: white;
-  font-size: 20px;
-  width: 50%;
-  padding: 10px;
+/* Delete Button (Admin Only) */
+.delete-btn {
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  background: #ff4f4f;
+  color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #ff2222;
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .event-card {
+    width: 90%;
+  }
+  .event-img-container {
+    height: 200px;
+  }
+  .event-title {
+    font-size: 20px;
+  }
+  .event-desc {
+    font-size: 14px;
+  }
+  .event-date,
+  .event-venue {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card {
+    width: 95%;
+  }
+  .event-img-container {
+    height: 180px;
+  }
+  .event-title {
+    font-size: 18px;
+  }
 }
