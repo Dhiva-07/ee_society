@@ -47,78 +47,67 @@ function Community() {
       }}
     >
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
-      <h1 className="Ctitle">Join Our Community</h1>
+
+      <h1 className="Ctitle">Join Our Community !!</h1>
+
       <div className="container">
+        {/* LEFT COLUMN */}
         <div className="introwrap">
           <div className="intro">
-            <h2 className="introhead">Be a Part of Something Bigger</h2>
+            <h2 className="introhead">Be a Part of Something Extraordinary</h2>
             <p className="introtext">
-              The Electrical Society is more than just an organization—it is a
-              thriving community of passionate individuals committed to pushing
-              the boundaries of electrical engineering. Our society is built on
-              the foundation of collaboration, creativity, and continuous
-              growth. We believe that every student has something valuable to
-              contribute, whether it's a fresh perspective, an innovative idea,
-              or simply a curiosity to learn and explore. By joining our
-              community, you become part of a movement that aims to create
-              impactful projects, host meaningful discussions, and encourage
-              knowledge-sharing among students across all academic years.
+              The Electrical Society isn’t just an organization—it’s a vibrant hub
+              of creativity, innovation, and collaboration. Here, every idea matters
+              and every voice is heard. Step into a community where your passion
+              for electrical engineering ignites groundbreaking projects and
+              inspires real change.
             </p>
           </div>
+
           <div className="intro">
-            <h2 className="introhead">Your Views Shape the Future</h2>
+            <h2 className="introhead">Your Ideas, Our Future</h2>
             <p className="introtext">
-              Every suggestion, every thought, and every perspective matters.
-              The Community Page is designed to be an open platform where
-              members can freely express their ideas, provide feedback, and help
-              shape the direction of the society. Whether it's proposing a new
-              workshop, suggesting a guest speaker, or discussing potential
-              hackathons, your voice can influence the events and initiatives we
-              undertake. We want this society to be built by the students, for
-              the students, ensuring that everyone's input is valued and
-              utilized in ways that contribute to our collective growth.
+              Whether you’re suggesting new workshops, brainstorming future
+              hackathons, or simply sharing insights, your contributions shape the
+              direction of our society. We’re building a platform that’s by the
+              students, for the students—where creativity drives progress.
             </p>
           </div>
+
           <div className="intro">
-            <h2 className="introhead">Together, We Build and Expand</h2>
+            <h2 className="introhead">Collaborate, Innovate, Elevate</h2>
             <p className="introtext">
-              The success of our society depends on active participation and a
-              willingness to share insights. As we continue to organize
-              technical workshops, coding competitions, and industry talks, your
-              engagement will help us refine and improve these experiences. The
-              more students who participate in discussions, the more we can
-              tailor our initiatives to fit the needs and interests of the
-              community. With your involvement, we can expand our reach, develop
-              stronger programs, and create opportunities that benefit everyone.
-            </p>
-          </div>
-          <div className="intro">
-            <h2 className="introhead">Share, Collaborate, and Innovate</h2>
-            <p className="introtext">
-              This is your chance to make an impact! Engage in meaningful
-              conversations, share your innovative ideas, and collaborate with
-              like-minded peers. Your contributions today can lead to
-              groundbreaking projects tomorrow. Whether you're looking to
-              enhance your skills, connect with industry experts, or simply be
-              part of an inspiring community, the Electrical Society is here to
-              support you. Let's work together to build a society that not only
-              excels in academics but also drives real-world innovation.
+              Engage in thought-provoking discussions, share your innovative ideas,
+              and collaborate with like-minded peers. Together, we’re paving the way
+              for academic excellence and real-world impact.
             </p>
           </div>
         </div>
-        <div className="community-container">
-          <h1>Community Suggestions</h1>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              value={suggestion}
-              onChange={(e) => setSuggestion(e.target.value)}
-              placeholder="Enter your suggestion..."
-              className="text"
-            ></textarea>
-            <button className="submit-btn" type="submit">
-              Submit
-            </button>
-          </form>
+
+        {/* RIGHT COLUMN */}
+        <div className="right-column">
+          <div className="community-container">
+            <h1>Community Suggestions</h1>
+            <form onSubmit={handleSubmit} className="suggestion-form">
+              <textarea
+                value={suggestion}
+                onChange={(e) => setSuggestion(e.target.value)}
+                placeholder="Share your suggestion..."
+                className="text"
+              ></textarea>
+              <button className="submit-btn" type="submit">
+                Submit Suggestion
+              </button>
+            </form>
+          </div>
+
+          <div className="illustration-space">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/9746/9746766.png"
+              alt="Community Illustration"
+              className="illustration-img"
+            />
+          </div>
         </div>
       </div>
     </div>
