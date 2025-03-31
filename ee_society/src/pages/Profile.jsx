@@ -31,7 +31,7 @@ const Profile = () => {
               <p className="profile-info__email">{user.email}</p>
             </div>
             <div className="profile-bio">
-              <h3 className="profile-bio__title">ABOUT ME</h3>
+              <h3 className="profile-bio__title">About Me</h3>
               <p className="profile-bio__text">
                 {user.bio ||
                   "No bio available. Add a short description about yourself."}
