@@ -28,7 +28,6 @@ function Login() {
       if (success) {
         handleSuccess(message);
         login(jwtToken);
-
         setTimeout(() => {
           navigate("/home");
         }, 1000);

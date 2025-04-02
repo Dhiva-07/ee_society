@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch user details from API
   const fetchUser = async (token) => {
     try {
-      const res = await axios.get("http://localhost:8080/auth/user", {
+      const res = await axios.get("http://localhost:8080/user/fetch", {
         headers: { Authorization: token },
       });
       setIsAuthenticated(true);

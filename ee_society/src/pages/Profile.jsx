@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import Navbar from "../components/Navbar";
+import EditProfile from "../components/EditProfile";
 import "./profile.css";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+  const [isEditing, setIsEditing] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const PF = process.env.REACT_APP_PUBLIC_URL2;
-
   return (
     <div
       className="profile-main-container"
@@ -38,8 +39,10 @@ const Profile = () => {
               </p>
             </div>
           </div>
+          <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </div>
       </div>
+      {isEditing && <EditProfile onClose={() => setIsEditing(false)} />}
     </div>
   );
 };

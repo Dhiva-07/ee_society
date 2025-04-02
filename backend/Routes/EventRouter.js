@@ -27,7 +27,6 @@ router.post("/add", ensureValid, upload.any(), async function (req, res) {
 
     const { title, desc, date , location } = req.body;
     const img = req.files[0] ? req.files[0].filename : null; 
-    console.log(img);
     if (!title || !desc || !date) {
       return res.status(400).json({
         success: false,
