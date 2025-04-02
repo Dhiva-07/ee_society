@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Navbar";
 import { handleError, handleSuccess } from "../utils";
 import "./community.css";
+import AuthContext from "../context/AuthContext";
 
 function Community() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [suggestion, setSuggestion] = useState("");
-  const name = localStorage.getItem("loggedInUser");
-  const email = localStorage.getItem("email");
+  const { user } = useContext(AuthContext);
+  const name = user.name;
+  const email = user.email;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

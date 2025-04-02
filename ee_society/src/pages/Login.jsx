@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 import AuthContext from "../context/AuthContext";
-import "./login.css";
+import "./auth.css";
 function Login() {
   const { login } = useContext(AuthContext);
   const [loginInfo, setloginInfo] = useState({
@@ -51,35 +51,38 @@ function Login() {
 
   return (
     <div className="Lcontainer">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            onChange={handleChange}
-            type="email"
-            name="email"
-            placeholder="Enter Your Email..."
-            value={loginInfo.email}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={handleChange}
-            type="password"
-            name="password"
-            placeholder="Enter Your Password..."
-            value={loginInfo.password}
-          />
-        </div>
-        <button className="loginbtn">Login</button>
-        <span>
-          Don't have an account ?<Link to="/signup">SignUp</Link>
-        </span>
-      </form>
-      <ToastContainer />
+  <form onSubmit={handleLogin}>
+    <h1>Login</h1>
+    <div className="input-container">
+      <input
+        onChange={handleChange}
+        type="email"
+        name="email"
+        placeholder="Enter Your Email..."
+        value={loginInfo.email}
+        required
+      />
+      <label htmlFor="email">Email</label>
     </div>
+    <div className="input-container">
+      <input
+        onChange={handleChange}
+        type="password"
+        name="password"
+        placeholder="Enter Your Password..."
+        value={loginInfo.password}
+        required
+      />
+      <label htmlFor="password">Password</label>
+    </div>
+    <button className="loginbtn">Login</button>
+    <span>
+      Don't have an account? <Link to="/signup">SignUp</Link>
+    </span>
+  </form>
+  <ToastContainer />
+</div>
+
   );
 }
 

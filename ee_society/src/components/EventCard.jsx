@@ -28,32 +28,27 @@ const EventCard = ({ event, PF, onAdmin }) => {
 
   return (
     <div className="event-card">
-      {/* Event Image */}
-      <div className="event-img-container">
-        <img className="event-img" src={PF + event.img} alt={event.title} />
-      </div>
-
-      {/* Event Information */}
-      <div className="event-info">
-        <h3 className="event-title">{event.title}</h3>
-        <p className="event-desc">{event.desc}</p>
-        <p className="event-date">
-          <span>Date:</span> {eventDate.toLocaleString()}
-        </p>
-        {isFutureEvent && (
-          <p className="event-venue">
-            <span>Venue:</span> {event.location}
-          </p>
-        )}
-
-        {/* Admin Delete Button */}
-        {onAdmin && (
-          <button onClick={() => handleDelete(event._id)} className="delete-btn">
-            Delete Event
-          </button>
-        )}
-      </div>
+    <div className="event-img-container">
+      <img className="event-img" src={PF + event.img} alt={event.title} />
     </div>
+    <div className="event-info">
+      <h3 className="event-title">{event.title}</h3>
+      <p className="event-desc">{event.desc}</p>
+      <p className="event-date">
+        <span>Date:</span> {eventDate.toLocaleString()}
+      </p>
+      {isFutureEvent && (
+        <p className="event-venue">
+          <span>Venue:</span> {event.location}
+        </p>
+      )}
+      {onAdmin && (
+        <button onClick={() => handleDelete(event._id)} className="delete-btn">
+          Delete Event
+        </button>
+      )}
+    </div>
+  </div>
   );
 };
 

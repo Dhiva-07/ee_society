@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500&display=swap');
 
-:root {
-  --primary-color: #2A2A72;
-  --accent-color: #00D4FF;
-  --dark-bg: #0A0A2E;
-  --light-text: #F5F9FC;
-  --gradient-1: linear-gradient(135deg, #2A2A72 0%, #009FFD 100%);
-  --gradient-2: linear-gradient(45deg, #00D4FF 0%, #2A2A72 100%);
-}
-
 /* Main Card Container */
 .event-card {
   width: 70%;

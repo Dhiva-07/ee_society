@@ -1,0 +1,122 @@
+.Lcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #3a8b96, #a044ff);
+  padding: 20px;
+}
+
+.Lcontainer > form {
+    position: relative; /* Needed for absolute positioning of pseudo-element */
+    padding: 40px;
+    border-radius: 15px;
+    background-color: rgb(245, 242, 242);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.5s ease-in-out;
+    overflow: hidden; /* Ensures the background doesn't spill out */
+  }
+
+.Lcontainer h1 {
+  margin-bottom: 20px;
+  color: rgb(10, 10, 10);
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.Lcontainer input {
+  width: 100%;
+  padding: 15px 10px 10px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  color: #333;
+}
+
+.Lcontainer input:focus {
+  border-bottom-color: #6a3093;
+  outline: none;
+}
+
+.Lcontainer label {
+  position: absolute;
+  top: 0%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white; /* Avoid overlap effect */
+  padding: 0 5px;
+  z-index: 0;
+}
+
+.Lcontainer input:focus + label,
+.Lcontainer input:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-100%);
+  font-size: 12px;
+  color: #6a3093;
+}
+
+.loginbtn {
+  background: linear-gradient(to right, #08eb4c, #24be36);
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.loginbtn:hover {
+  background: linear-gradient(to right, #09f3f7, #0ba0d6);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+span {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
+
+span a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+span a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

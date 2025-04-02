@@ -8,6 +8,7 @@ import Admin from "./components/Admin";
 import About from "./components/About";
 import Profile from "./pages/Profile";
 import { useContext } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import AuthContext from "./context/AuthContext";
 import Community from "./components/Community";
 

@@ -122,6 +122,7 @@ function Admin() {
           type="text"
           name="title"
           placeholder="Title"
+          className="input-admin"
           value={eventData.title}
           onChange={handleChange}
           required
@@ -129,6 +130,7 @@ function Admin() {
         <textarea
           name="desc"
           placeholder="Description"
+          className="textarea-admin"
           value={eventData.desc}
           onChange={handleChange}
           required
@@ -136,6 +138,7 @@ function Admin() {
         <input
           name="location"
           placeholder="Venue"
+          className="input-admin"
           value={eventData.location}
           onChange={handleChange}
           required
@@ -143,6 +146,7 @@ function Admin() {
         <input
           type="date"
           name="date"
+          className="input-admin"
           value={eventData.date}
           onChange={handleChange}
           required
@@ -150,6 +154,7 @@ function Admin() {
         <input
           type="file"
           accept="image/*"
+          className="input-admin-img"
           onChange={handleFileChange}
           required
         />

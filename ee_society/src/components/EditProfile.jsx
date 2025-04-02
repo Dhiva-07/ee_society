@@ -39,7 +39,7 @@ const EditProfile = ({ onClose }) => {
         },
       });
       if (res.ok) {
-        login(token); 
+        login(token);
         window.location.reload();
       }
     } catch (error) {
@@ -50,30 +50,49 @@ const EditProfile = ({ onClose }) => {
   return (
     <div className="edit-profile-modal">
       <div className="edit-profile-content">
-        <h2>Edit Profile</h2>
+        <i className="fas fa-times close-icon" onClick={onClose}></i>
+        <h2 className="profile-page-title">Edit Profile</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
-          />
-          <input
-            type="text"
-            name="name"
-            value={userData.name}
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            name="email"
-            value={userData.email}
-            onChange={handleChange}
-          />
-          <textarea name="bio" value={userData.bio} onChange={handleChange} />
+          <div className="input-wrapper">
+            <div className="input-namer">Profile Pic : </div>
+            <input
+              className="profile-input-area"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <div className="input-namer">Name : </div>
+            <input
+              type="text"
+              name="name"
+              className="profile-input-area"
+              value={userData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <div className="input-namer">Email : </div>
+            <input
+              type="email"
+              name="email"
+              className="profile-input-area"
+              value={userData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <div className="input-namer">Bio : </div>
+            <textarea
+              name="bio"
+              className="profile-textarea"
+              value={userData.bio}
+              onChange={handleChange}
+            />
+          </div>
           <button type="submit">Save Changes</button>
         </form>
-        <button onClick={onClose}>Cancel</button>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import EditProfile from "../components/EditProfile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import "./profile.css";
 
 const Profile = () => {
@@ -19,6 +21,11 @@ const Profile = () => {
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
       <div className="profile-page-container">
         <div className="profile-content">
+          <FontAwesomeIcon
+            icon={faEdit}
+            className="edit-icon"
+            onClick={() => setIsEditing(true)}
+          />
           <div className="profile-avatar">
             <img
               src={PF + user.img}
@@ -39,7 +46,6 @@ const Profile = () => {
               </p>
             </div>
           </div>
-          <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </div>
       </div>
       {isEditing && <EditProfile onClose={() => setIsEditing(false)} />}

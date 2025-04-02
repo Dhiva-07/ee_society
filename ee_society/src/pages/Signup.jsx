@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
-import "./signup.css";
+import "./auth.css";
 function Signup() {
 
   const [signupInfo, setsignupInfo] = useState({
@@ -50,11 +50,10 @@ function Signup() {
   };
 
   return (
-    <div className="Scontainer">
-      <h1>SignUp</h1>
+    <div className="Lcontainer">
       <form onSubmit={handleSignup}>
-        <div>
-          <label htmlFor="name">Name</label>
+      <h1>SignUp</h1>
+        <div className="input-container">
           <input
             onChange={handleChange}
             type="text"
@@ -63,9 +62,9 @@ function Signup() {
             placeholder="Enter Your Name..."
             value={signupInfo.name}
           />
+          <label htmlFor="name">Name</label>
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="input-container">
           <input
             onChange={handleChange}
             type="email"
@@ -73,9 +72,9 @@ function Signup() {
             placeholder="Enter Your Email..."
             value={signupInfo.email}
           />
+          <label htmlFor="email">Email</label>
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="input-container">
           <input
             onChange={handleChange}
             type="password"
@@ -83,8 +82,9 @@ function Signup() {
             placeholder="Enter Your Password..."
             value={signupInfo.password}
           />
+          <label htmlFor="password">Password</label>
         </div>
-        <button className="signupbtn">Signup</button>
+        <button className="loginbtn">Signup</button>
         <span>
           Already have an account ?<Link to="/login">Login</Link>
         </span>

@@ -1,31 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500&display=swap');
 
-/* Global Variables (if not already defined globally) */
-:root {
-  --primary-color: #2A2A72;
-  --accent-color: #00D4FF;
-  --dark-bg: #0A0A2E;
-  --light-text: #F5F9FC;
-  --gradient-1: linear-gradient(135deg, #0A0A2E, #2A2A72);
-}
-
-/* Ensure the entire page background is consistent */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--dark-bg);
-  color: var(--light-text);
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Profile Main Container */
 .profile-main-container {
   background: var(--dark-bg);
   min-height: 100vh;
   width: 100%;
 }
 
-/* Centered Page Container with a subtle gradient */
 .profile-page-container {
   display: flex;
   flex-direction: column;
@@ -33,7 +13,6 @@ html, body {
   padding: 2rem;
 }
 
-/* Profile Content Card */
 .profile-content {
   display: flex;
   flex-direction: column;
@@ -51,7 +30,6 @@ html, body {
   transform: translateY(-3px);
 }
 
-/* Profile Avatar */
 .profile-avatar {
   width: 150px;
   height: 150px;
@@ -63,7 +41,6 @@ html, body {
 }
 
 .profile-avatar:hover {
-  transform: scale(1.05);
   box-shadow: 0 0 12px var(--accent-color);
 }
 
@@ -73,7 +50,6 @@ html, body {
   object-fit: cover;
 }
 
-/* Profile Information */
 .profile-info {
   text-align: center;
   color: var(--light-text);
@@ -95,7 +71,13 @@ html, body {
   opacity: 0.9;
 }
 
-/* Profile Bio Section */
+.edit-icon {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 18px;
+  color: #63ff03;
+}
+
 .profile-bio {
   background: #1c1c1c;
   color: var(--light-text);
@@ -103,7 +85,6 @@ html, body {
   border-radius: 15px;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
 }
 
 .profile-bio__title {
@@ -120,7 +101,6 @@ html, body {
   line-height: 1.6;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 480px) {
   .profile-avatar {
     width: 120px;
