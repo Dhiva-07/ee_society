@@ -10,6 +10,7 @@ function Event() {
   const [upcoming, setUpcoming] = useState([]);
   const [past, setPast] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(null);
 
   const fetchEvents = async () => {
     try {
@@ -52,6 +53,21 @@ function Event() {
 
     setUpcoming(upcomingEvents);
     setPast(pastEvents);
+
+    // Set up countdown timer for the next event
+    if (upcomingEvents.length > 0) {
+      const eventDate = new Date(upcomingEvents[0].date);
+      const now = new Date();
+      const difference = eventDate - now;
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    }
   };
 
   return (
@@ -63,25 +79,35 @@ function Event() {
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
 
       <div className="event-page-container">
-        {/* Upcoming Events */}
-        <section className="event-section">
-          <h2 className="event-title">Upcoming Events</h2>
+        {/* Hero Section */}
+        <section className="hero-section-event">
           {upcoming.length === 0 ? (
-            <p className="no-event-text">
-              No upcoming events at the moment. Stay tuned!
-            </p>
+            <div className="coming-soon">
+              <h1>Coming Soon</h1>
+              <p>Stay tuned for our next event!</p>
+            </div>
           ) : (
-            <div className="event-list">
-              {upcoming.map((event) => (
-                <EventCard key={event._id} event={event} PF={PF} />
-              ))}
+            <div className="event-hero">
+                <div className="countdown">
+                  {timeLeft && (
+                    <div className="timer">
+                      <div>{timeLeft.days}d</div>
+                      <div>{timeLeft.hours}h</div>
+                      <div>{timeLeft.minutes}m</div>
+                      <div>{timeLeft.seconds}s</div>
+                    </div>
+                  )}
+                </div>
+              <img src={PF + upcoming[0].img} alt={upcoming[0].title} className="hero-img" />
+              <div className="hero-content">
+                <h1>{upcoming[0].title}</h1>
+                <p>{upcoming[0].desc}</p>
+              </div>
             </div>
           )}
         </section>
-
-        {/* Past Events */}
         <section className="event-section">
-          <h2 className="event-title">Past Events</h2>
+          <h2 className="admin-title">Past Events</h2>
           {past.length === 0 ? (
             <p className="no-event-text">No past events available.</p>
           ) : (

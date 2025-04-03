@@ -116,7 +116,7 @@ function Admin() {
       className="wrapper"
     >
       <Navbar dropdownOpen={dropdownOpen} setDropdownOpen={setDropdownOpen} />
-      <h2 className="addevent">Add New Event </h2>
+      <h2 className="admin-title">Add New Event </h2>
       <form onSubmit={handleSubmit} className="event-form">
         <input
           type="text"
@@ -144,7 +144,7 @@ function Admin() {
           required
         />
         <input
-          type="date"
+          type="datetime-local"
           name="date"
           className="input-admin"
           value={eventData.date}
@@ -158,12 +158,16 @@ function Admin() {
           onChange={handleFileChange}
           required
         />
-        <button className="addbtn" type="submit">
+        <button className="delete-btn" type="submit">
           Add Event
         </button>
       </form>
       <div className="event-section">
-        <h2 className="event-title">Upcoming Events</h2>
+        {upcoming.length === 0 ? (
+          <div></div>
+        ) : (
+          <h2 className="admin-title">Upcoming Events</h2>
+        )}
         <div className="test">
           {upcoming.map((event) => (
             <EventCard key={event._id} event={event} PF={PF} onAdmin={1} />
@@ -171,7 +175,7 @@ function Admin() {
         </div>
       </div>
       <div className="suggestioncontainer">
-        <h2 className="addevent">Suggestions </h2>
+        <h2 className="admin-title">Suggestions </h2>
         <div className="resug">
           <h2>Recent Suggestions : </h2>
           <div className="suggestion-list">
@@ -209,6 +213,9 @@ function Admin() {
                 <div key={s._id} className="suggestion-card">
                   <p className="suggestion-name">
                     <strong>Name </strong> : {s.name}
+                  </p>
+                  <p className="suggestion-email">
+                    <strong>Email</strong> : {s.email}
                   </p>
                   <p className="suggestion-desc">
                     <strong>Suggestion</strong> : {s.suggestion}

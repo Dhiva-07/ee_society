@@ -51,6 +51,7 @@
 }
 
 .profile-info {
+  width: 100%;
   text-align: center;
   color: var(--light-text);
 }
@@ -81,7 +82,8 @@
 .profile-bio {
   background: #1c1c1c;
   color: var(--light-text);
-  padding: 1.5rem;
+  padding: 5px;
+  width: 100%;
   border-radius: 15px;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

@@ -23,32 +23,21 @@ const EventCard = ({ event, PF, onAdmin }) => {
     }
   };
 
-  const eventDate = new Date(event.date);
-  const isFutureEvent = new Date() <= eventDate;
-
   return (
     <div className="event-card">
-    <div className="event-img-container">
-      <img className="event-img" src={PF + event.img} alt={event.title} />
+      <div className="event-img-container">
+        <img className="event-img" src={PF + event.img} alt={event.title} />
+      </div>
+      <div className="event-info">
+        <h3 className="event-title">{event.title}</h3>
+        <p className="event-desc">{event.desc}</p>
+        {onAdmin && (
+          <button onClick={() => handleDelete(event._id)} className="delete-btn">
+            Delete Event
+          </button>
+        )}
+      </div>
     </div>
-    <div className="event-info">
-      <h3 className="event-title">{event.title}</h3>
-      <p className="event-desc">{event.desc}</p>
-      <p className="event-date">
-        <span>Date:</span> {eventDate.toLocaleString()}
-      </p>
-      {isFutureEvent && (
-        <p className="event-venue">
-          <span>Venue:</span> {event.location}
-        </p>
-      )}
-      {onAdmin && (
-        <button onClick={() => handleDelete(event._id)} className="delete-btn">
-          Delete Event
-        </button>
-      )}
-    </div>
-  </div>
   );
 };
 

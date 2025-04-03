@@ -1,87 +1,148 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&family=Audiowide&family=Monoton&family=Zen+Dots&family=Press+Start+2P&family=Playfair+Display:wght@500;700&family=Poppins:wght@400;700&family=Exo+2:wght@400;700&display=swap');
 
-:root {
-  --primary-color: #2A2A72;
-  --accent-color: #00D4FF;
-  --dark-bg: #0A0A2E;
-  --light-text: #F5F9FC;
-  --gradient-1: linear-gradient(135deg, #2A2A72 0%, #009FFD 100%);
-  --gradient-2: linear-gradient(45deg, #00D4FF 0%, #2A2A72 100%);
-}
-
-/* Main Container */
 .event-page-container {
-  background: var(--dark-bg);
-  min-height: 100vh;
   padding: 40px 20px;
-  color: var(--light-text);
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  max-width: 1400px;
-  margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Event Section */
-.event-section {
-  text-align: center;
-}
-
-/* Section Title */
-.event-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Fallback / No Event Text */
-.no-event-text {
-  font-size: 18px;
-  color: var(--light-text);
-  opacity: 0.8;
-  font-style: italic;
-}
-
-/* Event List (Single-Column, Centered) */
-.event-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Example: If your EventCard has a .event-card class, you can style it bigger */
-.event-card {
-  width: 70%;
-  max-width: 800px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+.hero-section-event {
+  background: linear-gradient(90deg, #363c81, #630c7d, #380233, #a00817);
+  max-width: 1000px;
+  min-width: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect to emphasize rarity */
-.event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+.hero-section-event:hover {
+  transform: scale(1.05); /* Slightly enlarges */
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2); /* Adds depth */
 }
 
-/* You can style .event-card .title, .date, etc. inside your EventCard component */
+.event-hero {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.countdown {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+
+.hero-img {
+  width: 65%;
+  border-radius: 15px;
+}
+
+.hero-content {
+  margin-top: 10px;
+}
+
+.hero-content h1 {
+  font-size: 44px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff8c00, #ff0080, #8000ff, #00d4ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowing-text 4s infinite linear;
+}
+
+.hero-content p {
+  font-size: 20px;
+  font-weight: 500;
+  max-width: 1000px;
+  text-align: center; 
+  margin: 0 auto; 
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.timer div {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(12px); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  color: white; 
+  text-align: center;
+}
+
+
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: var(--gradient-1);
+}
+
+.coming-soon h1 {
+  font-size: 48px;
+  color: white;
+}
+
+.coming-soon p {
+  font-size: 24px;
+  color: white;
+}
+
+.event-section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center;
+}
+
+@keyframes glowing-text {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  .hero-content p {
+    font-size: 18px;
+  }
   .event-title {
     font-size: 28px;
-  }
-  .event-card {
-    width: 80%;
   }
 }
 
@@ -89,20 +150,32 @@
   .event-page-container {
     padding: 20px;
   }
+  .hero-section {
+    height: 50vh;
+  }
+  .hero-content h1 {
+    font-size: 30px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
   .event-title {
     font-size: 24px;
     margin-bottom: 20px;
   }
-  .event-card {
-    width: 90%;
-  }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    height: 40vh;
+  }
+  .hero-content h1 {
+    font-size: 24px;
+  }
+  .hero-content p {
+    font-size: 14px;
+  }
   .event-title {
     font-size: 20px;
-  }
-  .event-card {
-    width: 95%;
   }
 }

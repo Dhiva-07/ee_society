@@ -2,11 +2,14 @@
 
 /* Main Card Container */
 .event-card {
-  width: 70%;
+  width: calc(33.33% - 20px); /* 3 per row */
+  min-width: 300px; /* Prevents cards from becoming too small */
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.05);
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #37352e, #40412c, #606c58, #80908e);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -16,16 +19,16 @@
 /* Image Container */
 .event-img-container {
   width: 100%;
-  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  position: relative;
 }
 
 .event-img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
-  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -41,45 +44,35 @@
 
 /* Event Info Section */
 .event-info {
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
 }
 
 .event-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  color: #00D4FF;
-  margin-bottom: 5px;
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff8c00, #ff0080, #8000ff, #00d4ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowing-text 4s infinite linear;
 }
 
 .event-desc {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px;
-  color: var(--light-text);
-  line-height: 1.6;
-}
-
-.event-date,
-.event-venue {
-  font-family: 'Roboto', sans-serif;
-  font-size: 25px;
-  color: var(--light-text);
-}
-
-.event-date span,
-.event-venue span {
-  color: var(--accent-color);
-  font-weight: 500;
-  margin-right: 5px;
-  font-size: 25px;
+  margin: 0px auto;
+  font-size: 20px;
+  font-style: italic;
 }
 
 /* Delete Button (Admin Only) */
 .delete-btn {
-  align-self: flex-start;
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: 8px 20px;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
